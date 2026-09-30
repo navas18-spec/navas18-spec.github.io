@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>OAuth callback</title>
+<style>body{font-family:sans-serif;margin:2em}code{word-break:break-all;background:#eee;padding:2px}</style>
+<h1>Tesla authorization callback</h1>
+<p>Copy the full URL from the address bar (or the code below) back into <code>fleet.py exchange</code>. Nothing is sent anywhere by this page.</p>
+<p>code: <code id="c"></code></p><p>state: <code id="s"></code></p><p id="e" style="color:#b00"></p>
+<script>
+const q=new URLSearchParams(location.search);
+document.getElementById('c').textContent=q.get('code')||'(none)';
+document.getElementById('s').textContent=q.get('state')||'(none)';
+if(q.get('error'))document.getElementById('e').textContent='error: '+q.get('error')+' '+(q.get('error_description')||'');
+</script>
